@@ -3,6 +3,9 @@ is_record = False
 deviceId = "0715f7c38f8d2838"
 package = "com.clash.of.kings.inner"
 activity = ".EmpireActivity"
+standard_width = 1440
+standard_height = 2560
+
 
 check_areas = {
     'whole_screen': {'x': 0, 'y': 0, 'width': 1440, "height": 2560},

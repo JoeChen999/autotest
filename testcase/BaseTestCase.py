@@ -8,10 +8,11 @@ class BaseTestCase:
         self.log = Log.Log(test_suite)
         self.success = True
         self.case_name = test_case
+        self.test_suite = test_suite
 
     def set_up(self):
         for d in self.devices:
-            d.set_case_name(self.case_name)
+            d.set_case_name(suite=self.test_suite, name=self.case_name)
         for d in self.devices:
             d.start_activity()
 
@@ -23,10 +24,8 @@ class BaseTestCase:
 
     def dispose(self):
         if self.success:
-            Color.print_green_text("test case [%s] execute success" % self.case_name)
             self.log.info("test case [%s] execute success" % self.case_name)
         else:
-            Color.print_green_text("test case [%s] execute failed" % self.case_name)
             self.log.error("test case [%s] execute failed" % self.case_name)
         for d in self.devices:
             d.stop_activity()

@@ -29,4 +29,5 @@ class Log:
 
     def info(self, info):
         ts = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
+        Color.print_green_text(info)
         self.log.write("%s >>> INFO >>> %s\n" % (ts, info))

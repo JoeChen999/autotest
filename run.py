@@ -4,8 +4,18 @@ from common.Color import Color
 from common import DeviceManager
 import threading
 import traceback
+import shutil
+import os
+
 DM = DeviceManager.DeviceManager()
 THREAD_POOL = []
+
+
+def init():
+    shutil.rmtree("log")
+    shutil.rmtree("fault")
+    os.mkdir("log")
+    os.mkdir("fault")
 
 
 def read_test_cases_xml():
@@ -58,7 +68,7 @@ def run_test_suite(test_suite, devices):
                     exec "case = %s.%s(devices, '%s', '%s')" % (test_case['name'], test_case['name'], test_suite['name'], test_case['name'])
                     exec "case.set_up()"
                     exec "case.init()"
-                    exec "case.execute()"
+                    exec "if case.success: case.execute()"
                     exec "case.dispose()"
                 except Exception, e:
                     Color.print_red_text(e)
@@ -68,4 +78,5 @@ def run_test_suite(test_suite, devices):
 
 
 if __name__ == "__main__":
+    init()
     read_test_cases_xml()

@@ -45,14 +45,14 @@ def pic_check(device, case_name, factor, check_num, x, y, width, height, fault=T
         g_sub = gc / total
         b_sub = bc / total
         pic_same = 1 - (r_sub + g_sub + b_sub) / 3
+        print pic_same
         if pic_same >= factor:
             return True
         else:
             if fault:
-                while os.path.isfile('fault/error_%s_%d_%d.png' % (case_name, check_num, num)):
+                while os.path.isfile('fault/%s_%d_%d.png' % (case_name, check_num, num)):
                     num += + 1
-                    image2.writeToFile('fault/error_%s_%d_%d.png'
-                                    % (case_name, check_num, num), 'png')
+                image2.writeToFile('fault/%s_%d_%d.png' % (case_name, check_num, num), 'png')
             return False
     else:
         image1.writeToFile('pic/%s_%d.png' % (case_name, check_num), 'png')

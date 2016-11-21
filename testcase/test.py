@@ -1,11 +1,10 @@
 from BaseTestCase import BaseTestCase
 
 
-class quest(BaseTestCase):
+class test(BaseTestCase):
     def init(self):
-        self.log.error('1')
-        device = self.devices[0]
-        device.refresh_ui_data()
+        pass
 
     def execute(self):
-        self.log.error('2')
+        device = self.devices[0]
+
